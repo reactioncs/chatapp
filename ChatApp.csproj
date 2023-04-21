@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\Contact.png" />
+    <None Remove="Icons\phone.png" />
+    <None Remove="Icons\plus.eps" />
+    <None Remove="Icons\plus.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Icons\Contact.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\phone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\plus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\" />
+    <Folder Include="MVVM\ViewModel\" />
+    <Folder Include="MVVM\View\" />
+  </ItemGroup>
+
+</Project>
