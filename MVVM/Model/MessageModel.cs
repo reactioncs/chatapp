@@ -10,6 +10,17 @@ namespace ChatApp.MVVM.Model
         public string Message { get; set; }
         public DateTime Time { get; set; }
         public bool IsNativeOrigin { get; set; }
-        public bool? FirstMessage { get; set; }
+        public bool FirstMessage { get; set; }
+
+        public MessageModel()
+        {
+            Username = null;
+            UsernameColor = "#409aff";
+            ImageSource = "./Icons/Contact.png";
+            Message = "";
+            Time = DateTime.Now;
+            IsNativeOrigin = true;
+            FirstMessage = false;
+        }
     }
 }

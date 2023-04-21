@@ -1,13 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using ChatApp.MVVM.Model;
 using ChatApp.Core;
-using System.ComponentModel.Design;
 
 namespace ChatApp
 {
     class MainWindowViewModel : ObservableObject
     {
-        public ObservableCollection<MessageModel> Messages { get; set; }
         public ObservableCollection<ContactModel> Contacts { get; set; }
 
         public RelayCommand SendCommand { get; set; }
@@ -37,12 +35,11 @@ namespace ChatApp
 
         public MainWindowViewModel()
         {
-            Messages = new ObservableCollection<MessageModel>();
             Contacts = new ObservableCollection<ContactModel>();
 
             SendCommand = new RelayCommand(o =>
             {
-                Messages.Add(new MessageModel
+                SelectedContact.Messages.Add(new MessageModel
                 {
                     Message = Message,
                     FirstMessage = false
@@ -51,40 +48,61 @@ namespace ChatApp
                 Message = "";
             });
 
-            Messages.Add(new MessageModel
-            {
-                Username = "Alice",
-                UsernameColor = "#409aff",
-                ImageSource = "./Icons/Contact.png",
-                Message = ">>>>>>>Test<<<<<<<",
-                Time = System.DateTime.Now,
-                IsNativeOrigin = false,
-                FirstMessage = true 
-            });
-
+            string[] names = new string[] { "Alice", "Bob", "Cathy", "David", "Elly" };
             for (int i = 0; i < 4; i++)
             {
-                Messages.Add(new MessageModel
-                {
-                    Username = "Alice",
-                    UsernameColor = "#409aff",
-                    ImageSource = "./Icons/Contact.png",
-                    Message = "12121212",
-                    Time = System.DateTime.Now,
-                    IsNativeOrigin = false,
-                    FirstMessage = false
-                });
-            }
+                var Messages = new ObservableCollection<MessageModel>();
 
-                for (int i = 0; i < 4; i++)
-            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Messages.Add(new MessageModel
+                    {
+                        Username = names[i + 1],
+                        Message = "C/C++ compilation use case.",
+                        IsNativeOrigin = false,
+                        FirstMessage = true
+                    });
+                    Messages.Add(new MessageModel
+                    {
+                        Username = names[i + 1],
+                        Message = "there to Make?",
+                        IsNativeOrigin = true
+                    });
+                    Messages.Add(new MessageModel
+                    {
+                        Username = names[i + 1],
+                        Message = "there to Make?",
+                        IsNativeOrigin = true
+                    });
+                    Messages.Add(new MessageModel
+                    {
+                        Username = names[i],
+                        Message = "C/C++ compilation use case.",
+                        IsNativeOrigin = false,
+                        FirstMessage = true
+                    });
+                    Messages.Add(new MessageModel
+                    {
+                        Username = names[i],
+                        Message = "there to Make?",
+                        IsNativeOrigin = true
+                    });
+                    Messages.Add(new MessageModel
+                    {
+                        Username = names[i],
+                        Message = "there to Make?",
+                        IsNativeOrigin = true
+                    });
+                }
+
                 Contacts.Add(new ContactModel
                 {
-                    Username = $"Allll{i}",
+                    Username = names[i],
                     ImageSource = "./Icons/Contact.png",
                     Messages = Messages
                 });
             }
+
             SelectedContact = Contacts[1];
         }
     }
